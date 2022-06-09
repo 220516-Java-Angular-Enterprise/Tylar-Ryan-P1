@@ -6,7 +6,6 @@ import com.revature.reimbursements.services.UserService;
 import com.revature.reimbursements.servlets.AuthServlet;
 import com.revature.reimbursements.servlets.UserServlet;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
