@@ -1,7 +1,9 @@
 com\revature\reimbursements\daos\CrudDAO.class
+com\revature\reimbursements\dtos\LoginRequest.class
 com\revature\reimbursements\servlets\UserServlet.class
 com\revature\reimbursements\util\ContextLoaderListener.class
 com\revature\reimbursements\services\UserService.class
 com\revature\reimbursements\daos\UserDao.class
+com\revature\reimbursements\dtos\NewUserRequest.class
 com\revature\reimbursements\models\User.class
 com\revature\reimbursements\servlets\Servlet.class

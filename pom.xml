@@ -58,8 +58,8 @@
                     <configuration>
                         <url>http://localhost:8080/manager/text</url>
                         <server>LocalTomcat</server>
-                        <path>/Tyler-Ryan-P1</path>
-                        <update>true</update>
+                        <path>/reimbursements</path>
+<!--                        <update>true</update>-->
                     </configuration>
                 </plugin>
             </plugins>

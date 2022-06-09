@@ -1,7 +1,9 @@
-C:\users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\daos\CrudDAO.java
-C:\users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\models\User.java
-C:\users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\servlets\Servlet.java
-C:\users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\services\UserService.java
-C:\users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\servlets\UserServlet.java
-C:\users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\util\ContextLoaderListener.java
-C:\users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\daos\UserDao.java
+C:\Users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\daos\CrudDAO.java
+C:\Users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\dtos\LoginRequest.java
+C:\Users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\models\User.java
+C:\Users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\servlets\Servlet.java
+C:\Users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\services\UserService.java
+C:\Users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\servlets\UserServlet.java
+C:\Users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\util\ContextLoaderListener.java
+C:\Users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\daos\UserDao.java
+C:\Users\ryanj\OneDrive\Documents\WozU\Projects\Revature\Tylar-Ryan-P1\src\main\java\com\revature\reimbursements\dtos\NewUserRequest.java
