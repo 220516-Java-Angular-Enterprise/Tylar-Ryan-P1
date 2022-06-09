@@ -1,6 +1,7 @@
 package com.revature.reimbursements.services;
 
 import com.revature.reimbursements.daos.UserDAO;
+import com.revature.reimbursements.dtos.request.LoginRequest;
 import com.revature.reimbursements.dtos.request.NewUserRequest;
 import com.revature.reimbursements.models.User;
 import com.revature.reimbursements.util.annotations.Inject;
@@ -19,26 +20,13 @@ public class UserService {
         this.userDAO = userDAO;
     }
 
-    public User login(String username, String password) {
+    public User login(LoginRequest request) {
         /* List<User> users = new ArrayList<>() */
         /* users = userDAO.getAll() */
 
         User user = new User();
         List<User> users = userDAO.getAll();
 
-        for (User u : users) {
-            if (u.getUsername().equals(username)) {
-                user.setId(u.getId());
-                user.setUsername(u.getUsername());
-                if (u.getPassword().equals(password)) {
-                    user.setPassword(u.getPassword());
-                    break;
-                }
-            }
-            if (u.getPassword().equals(password)) {
-                user.setPassword(u.getPassword());
-            }
-        }
 
         return isValidCredentials(user);
     }
