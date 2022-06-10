@@ -83,7 +83,7 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Principal requester = tokenService.extractRequesterDetails(req.getHeader("Authorization"));
 
-        resp.getWriter().write("<h1>Users work!</h1>");
+        resp.getWriter().write("<h1>/user works!</h1>");
 
         if (requester == null) {
             resp.setStatus(401); // UNAUTHORIZED
