@@ -8,7 +8,7 @@ public class NewUserRequest {
 
     private final String role = "DEFAULT";
 
-    public NewUserRequest(){
+    public NewUserRequest() {
         super();
     }
 
@@ -37,7 +37,7 @@ public class NewUserRequest {
         return role;
     }
 
-    public User extractUser(){
+    public User extractUser() {
         return new User(username, password, role);
     }
 

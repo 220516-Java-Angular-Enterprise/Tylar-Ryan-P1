@@ -7,16 +7,18 @@ public class User {
     private String password;
     private String role;
 
-    public User(){super();}
+    public User() {
+        super();
+    }
 
-    public User(String id, String username, String password, String role) {
-        this.id = id;
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
         this.role = role;
     }
 
-    public User(String username, String password, String role) {
+    public User(String id, String username, String password, String role) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.role = role;
@@ -59,7 +61,6 @@ public class User {
         return "User{" +
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
                 '}';
     }
