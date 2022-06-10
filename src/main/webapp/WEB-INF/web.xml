@@ -12,7 +12,7 @@
 
 <!--    <servlet>-->
 <!--        <servlet-name>Servlet</servlet-name>-->
-<!--        <servlet-class>com.revature.reimbursements.servlets.Servlet</servlet-class>-->
+<!--        <servlet-class>com.revature.reimbursements.servlets.TestServlet</servlet-class>-->
 <!--    </servlet>-->
 
 <!--    <servlet-mapping>-->
