@@ -1,8 +1,8 @@
 package com.revature.reimbursements.dtos.request;
 
 public class LoginRequest {
-private String username;
-private String password;
+    private String username;
+    private String password;
 
     public LoginRequest() {
         super();

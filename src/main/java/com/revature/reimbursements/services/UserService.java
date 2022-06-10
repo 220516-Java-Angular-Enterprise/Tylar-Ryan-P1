@@ -3,16 +3,22 @@ package com.revature.reimbursements.services;
 import com.revature.reimbursements.daos.UserDAO;
 import com.revature.reimbursements.dtos.request.LoginRequest;
 import com.revature.reimbursements.dtos.request.NewUserRequest;
+import com.revature.reimbursements.dtos.responses.Principal;
 import com.revature.reimbursements.models.User;
 import com.revature.reimbursements.util.annotations.Inject;
+import com.revature.reimbursements.util.custom_exceptions.AuthenticationException;
 import com.revature.reimbursements.util.custom_exceptions.InvalidRequestException;
 import com.revature.reimbursements.util.custom_exceptions.InvalidUserException;
 import com.revature.reimbursements.util.custom_exceptions.ResourceConflictException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/* Purpose: validation ie. checks username, password, and retrieve data from our daos. */
 public class UserService {
+
+    @Inject
     private final UserDAO userDAO;
 
     @Inject
@@ -21,14 +27,11 @@ public class UserService {
     }
 
     public User login(LoginRequest request) {
-        /* List<User> users = new ArrayList<>() */
-        /* users = userDAO.getAll() */
-
         User user = new User();
-        List<User> users = userDAO.getAll();
-
-
-        return isValidCredentials(user);
+        if (!isValidUsername(request.getUsername()) || !isValidPassword(request.getPassword())) throw new InvalidRequestException("Invalid username or password");
+        user = userDAO.getUserByUsernameAndPassword(request.getUsername(), request.getPassword());
+        if (user == null) throw new AuthenticationException("Invalid credentials provided!");
+        return user;
     }
 
     public User register(NewUserRequest request) {
@@ -46,8 +49,12 @@ public class UserService {
         return user;
     }
 
-    public User getUserById(String id) {
-        return userDAO.getById(id);
+    public List<User> getAllUsers() {
+        return userDAO.getAll();
+    }
+
+    public List<User> getUserByUsername(String name) {
+        return userDAO.getUsersByUsername(name);
     }
 
     private boolean isValidUsername(String username) {
@@ -60,14 +67,5 @@ public class UserService {
 
     private boolean isValidPassword(String password) {
         return password.matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$");
-    }
-
-    private User isValidCredentials(User user) {
-        if (user.getUsername() == null && user.getPassword() == null)
-            throw new InvalidUserException("Incorrect username and password.");
-        else if (user.getUsername() == null) throw new InvalidUserException("Incorrect username.");
-        else if (user.getPassword() == null) throw new InvalidUserException("Incorrect password.");
-
-        return user;
     }
 }
