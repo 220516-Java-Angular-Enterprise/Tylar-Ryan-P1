@@ -5,7 +5,6 @@ import com.revature.reimbursements.daos.UserDAO;
 import com.revature.reimbursements.services.TokenService;
 import com.revature.reimbursements.services.UserService;
 import com.revature.reimbursements.servlets.AuthServlet;
-import com.revature.reimbursements.servlets.TestServlet;
 import com.revature.reimbursements.servlets.UserServlet;
 
 import javax.servlet.ServletContext;

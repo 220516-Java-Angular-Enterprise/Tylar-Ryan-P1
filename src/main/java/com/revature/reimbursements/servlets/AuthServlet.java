@@ -51,6 +51,6 @@ public class AuthServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().write("<h1>Hello</h1>");
+        resp.getWriter().write("<h1>Hello!</h1>");
     }
 }
