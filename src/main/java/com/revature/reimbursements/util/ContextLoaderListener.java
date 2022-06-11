@@ -5,6 +5,7 @@ import com.revature.reimbursements.daos.UserDAO;
 import com.revature.reimbursements.services.TokenService;
 import com.revature.reimbursements.services.UserService;
 import com.revature.reimbursements.servlets.AuthServlet;
+import com.revature.reimbursements.servlets.TestServlet;
 import com.revature.reimbursements.servlets.UserServlet;
 
 import javax.servlet.ServletContext;
@@ -26,6 +27,7 @@ public class ContextLoaderListener implements ServletContextListener {
 
         /* Need ServletContext class to map whatever servlet to url path. */
         ServletContext context = sce.getServletContext();
+
         context.addServlet("UserServlet", userServlet).addMapping("/users/*");
         context.addServlet("AuthServlet", authServlet).addMapping("/auth");
     }
