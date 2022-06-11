@@ -7,6 +7,7 @@ public class Principal {
     private String username;
     private String role;
 
+    // Default constructor - always have as best practice
     public Principal() {
         super();
     }

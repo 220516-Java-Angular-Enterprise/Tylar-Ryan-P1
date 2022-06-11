@@ -5,7 +5,6 @@ import com.revature.reimbursements.daos.UserDAO;
 import com.revature.reimbursements.services.TokenService;
 import com.revature.reimbursements.services.UserService;
 import com.revature.reimbursements.servlets.AuthServlet;
-import com.revature.reimbursements.servlets.TestServlet;
 import com.revature.reimbursements.servlets.UserServlet;
 
 import javax.servlet.ServletContext;
@@ -34,6 +33,6 @@ public class ContextLoaderListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        System.out.println("\nShutting down Yolp web application");
+        System.out.println("\nShutting down Reimbursements web application");
     }
 }
