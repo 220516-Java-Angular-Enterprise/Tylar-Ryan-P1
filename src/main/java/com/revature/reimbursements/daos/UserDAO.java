@@ -16,14 +16,14 @@ public class UserDAO implements CrudDAO<User> {
     @Override
     public void save(User obj) {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-<<<<<<< HEAD
+
             //delete crypt
             PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, ?, ?)");
-=======
-//            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, crypt(?, gen_salt('bf')), ?)");
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, ?, ?)");
 
->>>>>>> 1160d5c819adbb197787b45dd3b167443f08cc50
+//            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, crypt(?, gen_salt('bf')), ?)");
+          //  PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, ?, ?)");
+
+
             ps.setString(1, obj.getId());
             ps.setString(2, obj.getUsername());
             ps.setString(3, obj.getPassword());
