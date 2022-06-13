@@ -23,8 +23,8 @@ public class ConnectionFactory {
 
     private ConnectionFactory() {
         try {
-//            props.load(new FileReader("src/main/resources/db.properties"));
-            props.load(new FileReader("C:/Users/ryanj/OneDrive/Documents/WozU/Projects/Revature/Tylar-Ryan-P1/src/main/resources/db.properties"));
+            props.load(new FileReader("src/main/resources/db.properties"));
+//            props.load(new FileReader("C:/Users/ryanj/OneDrive/Documents/WozU/Projects/Revature/Tylar-Ryan-P1/src/main/resources/db.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }

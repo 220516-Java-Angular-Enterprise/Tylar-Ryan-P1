@@ -19,9 +19,7 @@ import java.util.List;
 
 //extends the capabilities of server by means of request-response programming model
 public class UserServlet extends HttpServlet {
-
-    /*we need mapper to translate between java and json when sending requests
-    and vise versa when receiving*/
+    /*we need mapper to translate between java and json when sending requests and vise versa when receiving*/
     @Inject
     private final ObjectMapper mapper;
     private final UserService userService;
