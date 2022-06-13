@@ -28,7 +28,8 @@ public class UserService {
 
     public User login(LoginRequest request) {
         User user = new User();
-        if (!isValidUsername(request.getUsername()) || !isValidPassword(request.getPassword())) throw new InvalidRequestException("Invalid username or password");
+        if (!isValidUsername(request.getUsername()) || !isValidPassword(request.getPassword()))
+            throw new InvalidRequestException("Invalid username or password");
         user = userDAO.getUserByUsernameAndPassword(request.getUsername(), request.getPassword());
         if (user == null) throw new AuthenticationException("Invalid credentials provided!");
         return user;
