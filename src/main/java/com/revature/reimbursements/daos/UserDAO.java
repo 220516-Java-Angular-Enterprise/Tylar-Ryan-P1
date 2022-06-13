@@ -18,6 +18,7 @@ public class UserDAO implements CrudDAO<User> {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
 //            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, crypt(?, gen_salt('bf')), ?)");
             PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, ?, ?)");
+
             ps.setString(1, obj.getId());
             ps.setString(2, obj.getUsername());
             ps.setString(3, obj.getPassword());
