@@ -1,10 +1,10 @@
 package com.revature.reimbursements.models;
 
-public class ers_user_roles {
+public class UserRole {
     private String role_id;
     private String role;
 
-    public ers_user_roles(String role_id, String role) {
+    public UserRole(String role_id, String role) {
         this.role_id = role_id;
         this.role = role;
     }

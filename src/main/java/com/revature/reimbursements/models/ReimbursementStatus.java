@@ -1,10 +1,10 @@
 package com.revature.reimbursements.models;
 
-public class ers_reimbursement_status {
+public class ReimbursementStatus {
     private String status_id;
     private String status;
 
-    public ers_reimbursement_status(String status_id, String status) {
+    public ReimbursementStatus(String status_id, String status) {
         this.status_id = status_id;
         this.status = status;
     }
