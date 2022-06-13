@@ -22,17 +22,17 @@ create table ers_user(
 	constraint fk_role_id foreign key (role_id) references ers_user_roles(role_id)
 )
 
-create table ers_reimbursement_type(
+create table reimbursement_type(
 	type_id varchar primary key not null,
 	type varchar
 )
 
-create table ers_reimbursement_status(
+create table reimbursement_status(
 	status_id varchar primary key not null,
 	status varchar
 )
 
-create table ers_reimbursement(
+create table reimbursement(
 	reimb_id varchar primary key not null,
 	amount varchar not null,
 	submitted timestamp,
@@ -46,12 +46,12 @@ create table ers_reimbursement(
 	type_id varchar
 )
 
-alter table ers_reimbursement
+alter table reimbursement
 add constraint fk_status_id
 foreign key (status_id)
-references ers_reimbursement_status(status_id);
+references reimbursement_status(status_id);
 
-alter table ers_reimbursement
+alter table reimbursement
 add constraint fk_type_id
 foreign key (type_id)
-references ers_reimbursement_type(type_id);
+references reimbursement_type(type_id);
