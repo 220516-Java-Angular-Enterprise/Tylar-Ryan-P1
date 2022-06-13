@@ -1,4 +1,4 @@
 package com.revature.reimbursements.daos;
 
-public class UserRolesDAO {
+public class ReimbursementStatusDAO {
 }
