@@ -17,7 +17,7 @@ public class UserDAO implements CrudDAO<User> {
     public void save(User obj) {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
             //delete crypt
-           PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, ?, ?)");
             ps.setString(1, obj.getId());
             ps.setString(2, obj.getUsername());
             ps.setString(3, obj.getPassword());
@@ -25,7 +25,10 @@ public class UserDAO implements CrudDAO<User> {
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("An error occurred when tyring to save to the database.");
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+            //throw new RuntimeException("An error occurred when tyring to get data from to the database.");
         }
     }
 
@@ -96,7 +99,10 @@ public class UserDAO implements CrudDAO<User> {
                 usernames.add(rs.getString("username").toLowerCase());
             }
         } catch (SQLException e) {
-            throw new RuntimeException("An error occurred when tyring to get data from to the database.");
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+            //throw new RuntimeException("An error occurred when tyring to get data from to the database.");
         }
 
         return usernames;
@@ -106,7 +112,7 @@ public class UserDAO implements CrudDAO<User> {
         User user = null;
 
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username = ? AND password = crypt(?, password)");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?");
             ps.setString(1, username);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();

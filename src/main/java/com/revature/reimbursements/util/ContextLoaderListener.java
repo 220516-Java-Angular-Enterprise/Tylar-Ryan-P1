@@ -29,6 +29,9 @@ public class ContextLoaderListener implements ServletContextListener {
 
         context.addServlet("UserServlet", userServlet).addMapping("/users/*");
         context.addServlet("AuthServlet", authServlet).addMapping("/auth");
+
+        String currentDir = System.getProperty("user.dir");
+        System.out.println("Current dir using System:" + currentDir);
     }
 
     @Override
