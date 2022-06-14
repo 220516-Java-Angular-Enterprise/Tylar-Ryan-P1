@@ -94,7 +94,7 @@ public class NewUserRequest {
     }
 
     public User extractUser() {
-        return new User(username, password, roleId, email, givenName, surname);
+        return new User(username, password, roleId, email, surname);
     }
 
     @Override

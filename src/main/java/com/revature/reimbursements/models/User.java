@@ -26,7 +26,7 @@ public class User {
         this.isActive = isActive;
     }
 
-    public User(String username, String password, String roleId, String email, String givenName, String surname) {
+    public User(String username, String password, String roleId, String email, String surname) {
         this.username = username;
         this.password = password;
         this.roleId = roleId;

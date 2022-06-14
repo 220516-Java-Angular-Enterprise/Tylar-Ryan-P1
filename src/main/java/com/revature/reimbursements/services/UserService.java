@@ -44,7 +44,7 @@ public class UserService {
                     user.setUserId(UUID.randomUUID().toString());
                     user.setRoleId(user.getRoleId());
                     user.setEmail(user.getEmail());
-                    user.setGivenName(user.getGivenName());
+                    //user.setGivenName(user.getGivenName());
                     user.setSurname(user.getSurname());
                     user.setIsActive(user.getIsActive());
                     userDAO.save(user);
