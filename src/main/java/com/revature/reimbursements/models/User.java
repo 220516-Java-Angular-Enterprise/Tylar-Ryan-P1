@@ -2,34 +2,38 @@ package com.revature.reimbursements.models;
 
 
 public class User {
-    private String id;
+    private String userId;
     private String username;
     private String password;
-    private String role;
+    private String roleId;
+    private String email;
+    private String givenName;
+    private String surname;
+    private boolean isActive = true;
 
     public User() {
         super();
     }
 
+    public User(String userId, String username, String password, String roleId, String email, String givenName, String surname, boolean isActive) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.roleId = roleId;
+        this.email = email;
+        this.givenName = givenName;
+        this.surname = surname;
+        this.isActive = isActive;
+    }
+
+    public User(String userId, String username, String password, String roleId) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.roleId = roleId;
+    }
+
     public User(String username, String password, String role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
-
-    public User(String id, String username, String password, String role) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getUsername() {
@@ -48,20 +52,66 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGivenName() {
+        return givenName;
+    }
+
+    public void setGivenName(String givenName) {
+        this.givenName = givenName;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+
 
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
+                "userId='" + userId + '\'' +
                 ", username='" + username + '\'' +
-                ", role='" + role + '\'' +
+                ", roleId='" + roleId + '\'' +
+                ", email='" + email + '\'' +
+                ", givenName='" + givenName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", isActive=" + isActive +
                 '}';
     }
 }

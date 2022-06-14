@@ -16,14 +16,17 @@ public class UserDAO implements CrudDAO<User> {
     @Override
     public void save(User obj) {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO ers_user (user_id, username, password, role) VALUES (?, ?, crypt(?, gen_salt('bf')), ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO ers_user (user_id, username, email, password, given_name, surname, is_active, role_id) VALUES (?, ?, crypt(?, gen_salt('bf')), ?, ?, ?, ?, ?)");
 //            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, crypt(?, gen_salt('bf')), ?)");
 //            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, ?, ?)");
-
-            ps.setString(1, obj.getId());
+            ps.setString(1,obj.getUserId());
             ps.setString(2, obj.getUsername());
-            ps.setString(3, obj.getPassword());
-            ps.setString(4, obj.getRole());
+            ps.setString(3, obj.getEmail());
+            ps.setString(4, obj.getPassword());
+            ps.setString(5, obj.getGivenName());
+            ps.setString(6, obj.getSurname());
+            ps.setBoolean(7, obj.isActive());
+            ps.setString(8, obj.getRoleId());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -70,10 +73,10 @@ public class UserDAO implements CrudDAO<User> {
 
             while (rs.next()) {
                 User user = new User(); // user -> null
-                user.setId(rs.getString("id")); // user (id) -> 1232abce231dsf
+                user.setUserId(rs.getString("id")); // user (id) -> 1232abce231dsf
                 user.setUsername(rs.getString("username")); // user (username) -> bduong0929
                 user.setPassword(rs.getString("password")); // user (password) -> P@ssw0rd
-                user.setRole(rs.getString("role")); // user (role) -> DEFAULT
+                user.setRoleId(rs.getString("role")); // user (role) -> DEFAULT
 
                 users.add(user);
             }
