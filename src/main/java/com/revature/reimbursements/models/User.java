@@ -26,6 +26,12 @@ public class User {
         this.isActive = isActive;
     }
 
+    public User(String username, String password, String roleId, String email, String surname) {
+        this.username = username;
+        this.password = password;
+        this.roleId = roleId;
+    }
+
     public User(String username, String password, String roleId) {
         this.username = username;
         this.password = password;
@@ -97,11 +103,11 @@ public class User {
         this.surname = surname;
     }
 
-    public boolean isActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(boolean active) {
+    public void setIsActive(boolean active) {
         isActive = active;
     }
 

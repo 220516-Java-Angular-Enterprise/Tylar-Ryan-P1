@@ -39,6 +39,7 @@ public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             NewUserRequest userRequest = mapper.readValue(req.getInputStream(), NewUserRequest.class);
+
             String[] uris = req.getRequestURI().split("/");
 
             if (uris.length == 4 && uris[3].equals("username")) {
@@ -70,6 +71,7 @@ public class UserServlet extends HttpServlet {
             resp.setStatus(201); // CREATED
             resp.setContentType("application/json");
             resp.getWriter().write(mapper.writeValueAsString(createdUser.getUserId()));
+            resp.getWriter().write(mapper.writeValueAsString(createdUser.getRoleId()));
         } catch (InvalidRequestException e) {
             resp.setStatus(404); // BAD REQUEST
         } catch (ResourceConflictException e) {
