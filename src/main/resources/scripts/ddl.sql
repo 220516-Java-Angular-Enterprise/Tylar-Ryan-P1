@@ -55,3 +55,4 @@ alter table reimbursement
 add constraint fk_type_id
 foreign key (type_id)
 references reimbursement_type(type_id);
+

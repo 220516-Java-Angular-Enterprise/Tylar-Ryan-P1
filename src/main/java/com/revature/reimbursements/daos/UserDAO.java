@@ -16,17 +16,25 @@ public class UserDAO implements CrudDAO<User> {
     @Override
     public void save(User obj) {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-//            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, crypt(?, gen_salt('bf')), ?)");
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, ?, ?)");
 
-            ps.setString(1, obj.getId());
+            //delete crypt
+            PreparedStatement ps = con.prepareStatement("INSERT INTO ers_user (user_id, username, email, password, given_name, surname, is_active, role_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+
+            ps.setString(1,obj.getUserId());
             ps.setString(2, obj.getUsername());
-            ps.setString(3, obj.getPassword());
-            ps.setString(4, obj.getRole());
+            ps.setString(3, obj.getEmail());
+            ps.setString(4, obj.getPassword());
+            ps.setString(5, obj.getGivenName());
+            ps.setString(6, obj.getSurname());
+            ps.setBoolean(7, obj.isActive());
+            ps.setString(8, obj.getRoleId());
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("An error occurred when tyring to save to the database.");
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+            //throw new RuntimeException("An error occurred when tyring to get data from to the database.");
         }
     }
 
@@ -50,7 +58,7 @@ public class UserDAO implements CrudDAO<User> {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                user = new User(rs.getString("id"), rs.getString("username"), rs.getString("password"), rs.getString("role"));
+                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role"));
             }
         } catch (SQLException e) {
             throw new RuntimeException("An error occurred when tyring to get data from to the database.");
@@ -69,10 +77,10 @@ public class UserDAO implements CrudDAO<User> {
 
             while (rs.next()) {
                 User user = new User(); // user -> null
-                user.setId(rs.getString("id")); // user (id) -> 1232abce231dsf
+                user.setUserId(rs.getString("id")); // user (id) -> 1232abce231dsf
                 user.setUsername(rs.getString("username")); // user (username) -> bduong0929
                 user.setPassword(rs.getString("password")); // user (password) -> P@ssw0rd
-                user.setRole(rs.getString("role")); // user (role) -> DEFAULT
+                user.setRoleId(rs.getString("role")); // user (role) -> DEFAULT
 
                 users.add(user);
             }
@@ -97,7 +105,10 @@ public class UserDAO implements CrudDAO<User> {
                 usernames.add(rs.getString("username").toLowerCase());
             }
         } catch (SQLException e) {
-            throw new RuntimeException("An error occurred when tyring to get data from to the database.");
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+            //throw new RuntimeException("An error occurred when tyring to get data from to the database.");
         }
 
         return usernames;
@@ -107,13 +118,13 @@ public class UserDAO implements CrudDAO<User> {
         User user = null;
 
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username = ? AND password = crypt(?, password)");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?");
             ps.setString(1, username);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                user = new User(rs.getString("id"), rs.getString("username"), rs.getString("password"), rs.getString("role"));
+                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role"));
             }
         } catch (SQLException e) {
             throw new InvalidSQLException("An error occurred when tyring to get data from to the database.");
@@ -131,7 +142,7 @@ public class UserDAO implements CrudDAO<User> {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                users.add(new User(rs.getString("id"), rs.getString("username"), rs.getString("password"), rs.getString("role")));
+                users.add(new User(rs.getString("username"), rs.getString("password"), rs.getString("role")));
             }
         } catch (SQLException e) {
             throw new InvalidSQLException("An error occurred when tyring to get data from to the database.");
