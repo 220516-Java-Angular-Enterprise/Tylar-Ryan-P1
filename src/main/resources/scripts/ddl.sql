@@ -13,13 +13,12 @@ create table ers_user_role(
 create table ers_user(
 	user_id varchar primary key not null,
 	username varchar not null,
-	email varchar not null,
-	password varchar not null,
-	given_name varchar not null,
-	surname varchar not null,
+	email varchar,
+	password varchar,
+	given_name varchar,
+	surname varchar,
 	is_active boolean,
-	role_id varchar,
-	constraint fk_role_id foreign key (role_id) references ers_user_roles(role_id)
+	role_id varchar
 )
 
 create table reimbursement_type(
