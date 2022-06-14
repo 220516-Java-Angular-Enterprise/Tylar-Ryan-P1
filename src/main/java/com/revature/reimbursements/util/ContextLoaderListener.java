@@ -17,6 +17,8 @@ public class ContextLoaderListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("\nInitializing Reimbursements web application");
 
+        String currentDir = System.getProperty("user.dir");
+        System.out.println("Current dir using System:" + currentDir);
         /* ObjectMapper provides functionality for reading and writing JSON, either to and from basic POJOs (Plain Old Java Objects) */
         ObjectMapper mapper = new ObjectMapper();
 

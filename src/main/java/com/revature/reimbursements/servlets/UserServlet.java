@@ -65,10 +65,11 @@ public class UserServlet extends HttpServlet {
                 return;
             }
 
+
             User createdUser = userService.register(userRequest);
             resp.setStatus(201); // CREATED
             resp.setContentType("application/json");
-            resp.getWriter().write(mapper.writeValueAsString(createdUser.getId()));
+            resp.getWriter().write(mapper.writeValueAsString(createdUser.getUserId()));
         } catch (InvalidRequestException e) {
             resp.setStatus(404); // BAD REQUEST
         } catch (ResourceConflictException e) {
