@@ -26,7 +26,7 @@ public class UserDAO implements CrudDAO<User> {
             ps.setString(4, obj.getPassword());
             ps.setString(5, obj.getGivenName());
             ps.setString(6, obj.getSurname());
-            ps.setBoolean(7, obj.isActive());
+            ps.setBoolean(7, obj.getIsActive());
             ps.setString(8, obj.getRoleId());
             ps.executeUpdate();
 

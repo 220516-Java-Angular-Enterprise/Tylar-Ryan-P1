@@ -11,7 +11,7 @@ public class NewUserRequest {
     private String surname;
     private boolean isActive = true;
 
-    private final String role = "DEFAULT";
+    private String role = "DEFAULT";
 
     public NewUserRequest() {
         super();
@@ -81,11 +81,11 @@ public class NewUserRequest {
         this.surname = surname;
     }
 
-    public boolean isActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(boolean active) {
+    public void setIsActive(boolean active) {
         isActive = active;
     }
 
@@ -94,7 +94,7 @@ public class NewUserRequest {
     }
 
     public User extractUser() {
-        return new User(username, password, roleId);
+        return new User(username, password, roleId, email, givenName, surname);
     }
 
     @Override
@@ -102,6 +102,11 @@ public class NewUserRequest {
         return "NewUserRequest{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", roleId='" + roleId + '\'' +
+                ", email='" + email + '\'' +
+                ", givenName='" + givenName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", isActive=" + isActive +
                 ", role='" + role + '\'' +
                 '}';
     }

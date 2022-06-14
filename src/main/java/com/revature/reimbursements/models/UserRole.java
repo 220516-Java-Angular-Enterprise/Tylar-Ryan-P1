@@ -1,20 +1,20 @@
 package com.revature.reimbursements.models;
 
 public class UserRole {
-    private String role_id;
+    private String roleId;
     private String role;
 
-    public UserRole(String role_id, String role) {
-        this.role_id = role_id;
+    public UserRole(String roleId, String role) {
+        this.roleId = roleId;
         this.role = role;
     }
 
-    public String getRole_id() {
-        return role_id;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setRole_id(String role_id) {
-        this.role_id = role_id;
+    public void setRoleId(String role_id) {
+        this.roleId = roleId;
     }
 
     public String getRole() {
