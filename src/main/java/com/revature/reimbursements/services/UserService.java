@@ -1,6 +1,7 @@
 package com.revature.reimbursements.services;
 
 import com.revature.reimbursements.daos.UserDAO;
+import com.revature.reimbursements.daos.UserRoleDAO;
 import com.revature.reimbursements.dtos.request.LoginRequest;
 import com.revature.reimbursements.dtos.request.NewUserRequest;
 import com.revature.reimbursements.dtos.responses.Principal;
@@ -42,11 +43,7 @@ public class UserService {
             if (isValidUsername(user.getUsername())) {
                 if (isValidPassword(user.getPassword())) {
                     user.setUserId(UUID.randomUUID().toString());
-                    user.getSurname();
-                    user.getEmail();
-                    user.getGivenName();
-                    user.getRoleId();
-                    user.isActive();
+                    user.setRole(user.getRole());
                     userDAO.save(user);
                 } else throw new InvalidRequestException("Invalid password. Minimum eight characters, at least one letter, one number and one special character.");
             } else throw new InvalidRequestException("Invalid username. Username needs to be 8-20 characters long.");

@@ -5,7 +5,7 @@ public class User {
     private String userId;
     private String username;
     private String password;
-    private String roleId;
+    private String role;
     private String email;
     private String givenName;
     private String surname;
@@ -15,22 +15,22 @@ public class User {
         super();
     }
 
-    public User(String userId, String username, String password, String roleId, String email, String givenName, String surname, boolean isActive) {
+    public User(String userId, String username, String password, String role, String email, String givenName, String surname, boolean isActive) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.roleId = roleId;
+        this.role = role;
         this.email = email;
         this.givenName = givenName;
         this.surname = surname;
         this.isActive = isActive;
     }
 
-    public User(String userId, String username, String password, String roleId) {
+    public User(String userId, String username, String password, String role) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.roleId = roleId;
+        this.role = role;
     }
 
     public User(String username, String password, String role) {
@@ -52,13 +52,7 @@ public class User {
         this.password = password;
     }
 
-    public String getRoleId() {
-        return roleId;
-    }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
-    }
 
     public String getUserId() {
         return userId;
@@ -100,14 +94,20 @@ public class User {
         isActive = active;
     }
 
+    public String getRole() {
+        return role;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     @Override
     public String toString() {
         return "User{" +
                 "userId='" + userId + '\'' +
                 ", username='" + username + '\'' +
-                ", roleId='" + roleId + '\'' +
+                ", role='" + role + '\'' +
                 ", email='" + email + '\'' +
                 ", givenName='" + givenName + '\'' +
                 ", surname='" + surname + '\'' +

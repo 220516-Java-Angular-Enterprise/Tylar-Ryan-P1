@@ -16,7 +16,8 @@ public class UserDAO implements CrudDAO<User> {
     @Override
     public void save(User obj) {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO ers_user (user_id, username, email, password, given_name, surname, is_active, role_id) VALUES (?, ?, crypt(?, gen_salt('bf')), ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO ers_user (user_id, username, email, password, given_name, surname, is_active, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+//            PreparedStatement ps = con.prepareStatement("INSERT INTO ers_user (user_id, username, email, password, given_name, surname, is_active, role) VALUES (?, ?, ?, crypt(?, gen_salt('bf')), ?, ?, ?, ?)");
 //            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, crypt(?, gen_salt('bf')), ?)");
 //            PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, username, password, role) VALUES (?, ?, ?, ?)");
             ps.setString(1,obj.getUserId());
@@ -26,7 +27,7 @@ public class UserDAO implements CrudDAO<User> {
             ps.setString(5, obj.getGivenName());
             ps.setString(6, obj.getSurname());
             ps.setBoolean(7, obj.isActive());
-            ps.setString(8, obj.getRoleId());
+            ps.setString(8, obj.getRole());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -76,7 +77,7 @@ public class UserDAO implements CrudDAO<User> {
                 user.setUserId(rs.getString("id")); // user (id) -> 1232abce231dsf
                 user.setUsername(rs.getString("username")); // user (username) -> bduong0929
                 user.setPassword(rs.getString("password")); // user (password) -> P@ssw0rd
-                user.setRoleId(rs.getString("role")); // user (role) -> DEFAULT
+                user.setRole(rs.getString("role")); // user (role) -> DEFAULT
 
                 users.add(user);
             }
