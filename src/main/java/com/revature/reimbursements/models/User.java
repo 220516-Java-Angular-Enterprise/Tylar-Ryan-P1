@@ -5,7 +5,7 @@ public class User {
     private String userId;
     private String username;
     private String password;
-    private String role;
+    private String roleId;
     private String email;
     private String givenName;
     private String surname;
@@ -15,25 +15,29 @@ public class User {
         super();
     }
 
-    public User(String userId, String username, String password, String role, String email, String givenName, String surname, boolean isActive) {
+    public User(String userId, String username, String password, String roleId, String email, String givenName, String surname, boolean isActive) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.roleId = roleId;
         this.email = email;
         this.givenName = givenName;
         this.surname = surname;
         this.isActive = isActive;
     }
 
-    public User(String userId, String username, String password, String role) {
-        this.userId = userId;
+    public User(String username, String password, String roleId) {
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.roleId = roleId;
     }
 
-    public User(String username, String password, String role) {
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -52,14 +56,20 @@ public class User {
         this.password = password;
     }
 
-
-
-    public String getUserId() {
-        return userId;
+    public String getRole() {
+        return roleId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setRole(String role) {
+        this.roleId = role;
+    }
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 
     public String getEmail() {
@@ -94,24 +104,17 @@ public class User {
         isActive = active;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     @Override
     public String toString() {
         return "User{" +
                 "userId='" + userId + '\'' +
                 ", username='" + username + '\'' +
-                ", role='" + role + '\'' +
                 ", email='" + email + '\'' +
                 ", givenName='" + givenName + '\'' +
                 ", surname='" + surname + '\'' +
                 ", isActive=" + isActive +
+                "id='" + userId + '\'' +
+                ", role='" + roleId + '\'' +
                 '}';
     }
 }

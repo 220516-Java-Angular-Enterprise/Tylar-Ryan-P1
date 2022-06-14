@@ -19,7 +19,9 @@ import java.util.List;
 
 //extends the capabilities of server by means of request-response programming model
 public class UserServlet extends HttpServlet {
+
     /*we need mapper to translate between java and json when sending requests and vise versa when receiving*/
+
     @Inject
     private final ObjectMapper mapper;
     private final UserService userService;
@@ -63,6 +65,7 @@ public class UserServlet extends HttpServlet {
                 return;
             }
 
+
             User createdUser = userService.register(userRequest);
             resp.setStatus(201); // CREATED
             resp.setContentType("application/json");
@@ -80,8 +83,6 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Principal requester = tokenService.extractRequesterDetails(req.getHeader("Authorization"));
-
-        resp.getWriter().write("<h1>/user works!</h1>");
 
         if (requester == null) {
             resp.setStatus(401); // UNAUTHORIZED

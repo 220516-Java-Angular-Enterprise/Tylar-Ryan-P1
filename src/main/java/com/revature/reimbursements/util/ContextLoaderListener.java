@@ -17,9 +17,14 @@ public class ContextLoaderListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("\nInitializing Reimbursements web application");
 
+<<<<<<< HEAD
 //        String currentDir = System.getProperty("user.dir");
 //        System.out.println("Current dir using System:" + currentDir);
 
+=======
+        String currentDir = System.getProperty("user.dir");
+        System.out.println("Current dir using System:" + currentDir);
+>>>>>>> 0c10f27bc576c352e6c9e4d7ad22420310269240
         /* ObjectMapper provides functionality for reading and writing JSON, either to and from basic POJOs (Plain Old Java Objects) */
         ObjectMapper mapper = new ObjectMapper();
 
@@ -32,6 +37,8 @@ public class ContextLoaderListener implements ServletContextListener {
 
         context.addServlet("UserServlet", userServlet).addMapping("/users/*");
         context.addServlet("AuthServlet", authServlet).addMapping("/auth");
+
+
     }
 
     @Override

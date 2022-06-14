@@ -5,32 +5,35 @@ import com.revature.reimbursements.models.User;
 public class NewUserRequest {
     private String username;
     private String password;
+    private String roleId;
     private String email;
     private String givenName;
     private String surname;
     private boolean isActive = true;
 
 //    private String role = "DEFAULT";
-    private String role;
+//    private String role;
 
     public NewUserRequest() {
         super();
     }
 
-    public NewUserRequest(String username, String password) {
+    public NewUserRequest(String username, String password, String roleId) {
         this.username = username;
         this.password = password;
+        this.roleId = roleId;
     }
 
-    public NewUserRequest(String username, String password, String email, String givenName, String surname, boolean isActive, String role) {
+    public NewUserRequest(String username, String password, String roleId, String email, String givenName, String surname, boolean isActive) {
         this.username = username;
         this.password = password;
+        this.roleId = roleId;
         this.email = email;
         this.givenName = givenName;
         this.surname = surname;
         this.isActive = isActive;
-        this.role = role;
     }
+
 
     public String getUsername() {
         return username;
@@ -48,20 +51,13 @@ public class NewUserRequest {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
-
-    public User extractUser() {
-        return new User(username, password, role);
-    }
-
-
-
 
     public String getEmail() {
         return email;
@@ -95,12 +91,16 @@ public class NewUserRequest {
         isActive = active;
     }
 
+    public User extractUser() {
+        return new User(username, password, roleId);
+    }
+
     @Override
     public String toString() {
         return "NewUserRequest{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
+                ", role='" + roleId + '\'' +
                 '}';
     }
 }
