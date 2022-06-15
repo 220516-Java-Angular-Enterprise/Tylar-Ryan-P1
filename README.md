@@ -4,7 +4,7 @@ Java Enterprise Foundations Project Requirements
 Project Description
 
 Our P1 reimbursement project aims to automate reimbursement processes of a company.
-it will allow an Admin to enter new employees of the company and assign their role or position with the company.
+it will allow an Admin to enter new employees of the company and assign their role or position with the company. Our reimbursement project will have different functionalities corresponding to the role of the employee. Only the admin can add and edit a new user and only the finance manager can approve or reject the reimbursement request. The project will also have security features where it will logout the user when his token has expired.
 
 Project Design Specifications and Documents
 Relational Data Model
