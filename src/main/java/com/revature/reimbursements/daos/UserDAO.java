@@ -132,6 +132,7 @@ public class UserDAO implements CrudDAO<User> {
 
             if (rs.next()) {
                 user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role_id"));
+                user.setUserId(rs.getString("user_id"));
             }
         } catch (SQLException e) {
             throw new InvalidSQLException("An error occurred when tyring to get data from to the database.");

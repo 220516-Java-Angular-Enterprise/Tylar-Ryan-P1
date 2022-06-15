@@ -1,18 +1,20 @@
 package com.revature.reimbursements.dtos.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.revature.reimbursements.daos.UserDAO;
 import com.revature.reimbursements.models.User;
 import com.revature.reimbursements.util.annotations.Inject;
 
 
 public class NewUserRequest {
-    @Inject
-    private final UserDAO userDAO;
+    //@Inject
+    //private final UserDAO userDAO;
     private String username;
     private String password;
     private String email;
+   // @JsonProperty("given_name")
     private String givenName;
-    private Boolean isActive = true;
+    private boolean isActive;
     private String surname;
     private String role = "DEFAULT";
 
@@ -81,6 +83,14 @@ public class NewUserRequest {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
 
     public User extractUser() {

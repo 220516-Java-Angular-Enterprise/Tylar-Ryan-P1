@@ -7,13 +7,12 @@ public class User {
     private String userId;
     private String username;
     private String password;
-    private String roleId = "3";
+    private String roleId ;
     private String email;
-    //@Column(name = "given_name")
-    @JsonProperty("given_name")
-    private String givenName="worker";
+
+    private String givenName;
     private String surname;
-    private boolean isActive = true;
+    private boolean isActive;
 
     public User() {
         super();
@@ -30,7 +29,7 @@ public class User {
         this.isActive = isActive;
     }
 
-    public User(String username, String password, String roleId,String email, String givenName,String surname, Boolean isActive) {
+    public User(String username, String password, String roleId,String email, String givenName,String surname, boolean isActive) {
         this.username = username;
         this.password = password;
         this.isActive = isActive;
@@ -99,13 +98,13 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    @JsonProperty("given_name")
+
     public String getGivenName() {
         return givenName;
     }
-    @JsonProperty("given_name")
+
     public void setGivenName(String givenName) {
-        this.givenName ="worker";
+        this.givenName =givenName;
     }
 
     public String getSurname() {
