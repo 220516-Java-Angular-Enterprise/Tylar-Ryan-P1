@@ -17,6 +17,7 @@ public class UserDAO implements CrudDAO<User> {
     public void save(User obj) {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
 
+
             //delete crypt
             PreparedStatement ps = con.prepareStatement("INSERT INTO ers_user (user_id, username, email, password, given_name, surname, is_active, role_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
@@ -28,6 +29,7 @@ public class UserDAO implements CrudDAO<User> {
             ps.setString(6, obj.getSurname());
             ps.setBoolean(7, obj.getIsActive());
             ps.setString(8, obj.getRoleId());
+            System.out.println("sql"+ps.toString());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -77,7 +79,7 @@ public class UserDAO implements CrudDAO<User> {
         List<User> users = new ArrayList<>();
 
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM ers_user");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -100,7 +102,7 @@ public class UserDAO implements CrudDAO<User> {
         List<String> usernames = new ArrayList<>();
 
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT username FROM users");
+            PreparedStatement ps = con.prepareStatement("SELECT username FROM ers_user");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -142,7 +144,7 @@ public class UserDAO implements CrudDAO<User> {
         List<User> users = new ArrayList<>();
 
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username LIKE ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM ers_user WHERE username LIKE ?");
             ps.setString(1, name + '%');
             ResultSet rs = ps.executeQuery();
 

@@ -1,8 +1,13 @@
 package com.revature.reimbursements.dtos.request;
 
+import com.revature.reimbursements.daos.UserDAO;
 import com.revature.reimbursements.models.User;
+import com.revature.reimbursements.util.annotations.Inject;
+
 
 public class NewUserRequest {
+    @Inject
+    private final UserDAO userDAO;
     private String username;
     private String password;
     private String email;
@@ -19,7 +24,7 @@ public class NewUserRequest {
         this.username = username;
         this.password = password;
     }
-
+//jsonpart
     public NewUserRequest(String username, String email, String password, String givenName, String surname, String role) {
         this.username = username;
         this.password = password;
@@ -79,8 +84,17 @@ public class NewUserRequest {
     }
 
     public User extractUser() {
-        return new User(username, password, email, surname, isActive);
+        String roleId;
+        if (role.equals("ADMIN")) {
+            roleId = "1";
+        } else if (role.equals("FINANCE MANAGER")) {
+            roleId = "2";
+        } else {
+            roleId = "3";
+        }
+        return new User(username, password,roleId,email, givenName,surname, isActive);
     }
+
 
     @Override
     public String toString() {

@@ -1,13 +1,17 @@
 package com.revature.reimbursements.models;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class User {
     private String userId;
     private String username;
     private String password;
-    private String roleId = "three";
+    private String roleId = "3";
     private String email;
-    private String givenName;
+    //@Column(name = "given_name")
+    @JsonProperty("given_name")
+    private String givenName="worker";
     private String surname;
     private boolean isActive = true;
 
@@ -26,12 +30,14 @@ public class User {
         this.isActive = isActive;
     }
 
-    public User(String username, String password, String email, String surname, Boolean isActive) {
+    public User(String username, String password, String roleId,String email, String givenName,String surname, Boolean isActive) {
         this.username = username;
         this.password = password;
         this.isActive = isActive;
         this.email = email;
         this.surname = surname;
+        this.roleId=roleId;
+        this.givenName=givenName;
     }
 
     public User(String username, String password, String roleId) {
@@ -93,13 +99,13 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    @JsonProperty("given_name")
     public String getGivenName() {
         return givenName;
     }
-
+    @JsonProperty("given_name")
     public void setGivenName(String givenName) {
-        this.givenName = givenName;
+        this.givenName ="worker";
     }
 
     public String getSurname() {

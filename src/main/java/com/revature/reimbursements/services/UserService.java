@@ -22,6 +22,7 @@ public class UserService {
     @Inject
     private final UserDAO userDAO;
 
+
     @Inject
     public UserService(UserDAO userDAO) {
         this.userDAO = userDAO;
@@ -42,11 +43,12 @@ public class UserService {
             if (isValidUsername(user.getUsername())) {
                 if (isValidPassword(user.getPassword())) {
                     user.setUserId(UUID.randomUUID().toString());
-                    user.setRole(user.getRole());
+                    /*user.setRoleId(user.getRoleId());
                     user.setEmail(user.getEmail());
+
                     //user.setGivenName(user.getGivenName());
                     user.setSurname(user.getSurname());
-                    user.setIsActive(user.getIsActive());
+                    user.setIsActive(user.getIsActive());*/
                     userDAO.save(user);
                 } else throw new InvalidRequestException("Invalid password. Minimum eight characters, at least one letter, one number and one special character.");
             } else throw new InvalidRequestException("Invalid username. Username needs to be 8-20 characters long.");
