@@ -5,33 +5,30 @@ import com.revature.reimbursements.models.User;
 public class NewUserRequest {
     private String username;
     private String password;
-    private String roleId;
     private String email;
     private String givenName;
+    private Boolean isActive = true;
     private String surname;
-    private boolean isActive = true;
-
     private String role = "DEFAULT";
 
     public NewUserRequest() {
         super();
     }
 
-    public NewUserRequest(String username, String password, String roleId) {
+    public NewUserRequest(String username, String password) {
         this.username = username;
         this.password = password;
-        this.roleId = roleId;
     }
 
-    public NewUserRequest(String username, String password, String roleId, String email, String givenName, String surname, boolean isActive) {
+    public NewUserRequest(String username, String email, String password, String givenName, String surname, String role) {
         this.username = username;
         this.password = password;
-        this.roleId = roleId;
         this.email = email;
         this.givenName = givenName;
         this.surname = surname;
-        this.isActive = isActive;
+        this.role = role;
     }
+
 
     public String getUsername() {
         return username;
@@ -47,14 +44,6 @@ public class NewUserRequest {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
     }
 
     public String getEmail() {
@@ -81,20 +70,16 @@ public class NewUserRequest {
         this.surname = surname;
     }
 
-    public boolean getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(boolean active) {
-        isActive = active;
-    }
-
     public String getRole() {
         return role;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public User extractUser() {
-        return new User(username, password, roleId, email, surname);
+        return new User(username, password, email, surname, isActive);
     }
 
     @Override
@@ -102,12 +87,10 @@ public class NewUserRequest {
         return "NewUserRequest{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", roleId='" + roleId + '\'' +
                 ", email='" + email + '\'' +
                 ", givenName='" + givenName + '\'' +
-                ", surname='" + surname + '\'' +
                 ", isActive=" + isActive +
-                ", role='" + role + '\'' +
+                ", surname='" + surname + '\'' +
                 '}';
     }
 }

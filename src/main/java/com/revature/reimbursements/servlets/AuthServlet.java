@@ -3,6 +3,7 @@ package com.revature.reimbursements.servlets;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.reimbursements.dtos.request.LoginRequest;
 import com.revature.reimbursements.dtos.responses.Principal;
+import com.revature.reimbursements.models.User;
 import com.revature.reimbursements.services.TokenService;
 import com.revature.reimbursements.services.UserService;
 import com.revature.reimbursements.util.annotations.Inject;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 public class AuthServlet extends HttpServlet {
     @Inject
@@ -51,6 +53,12 @@ public class AuthServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Principal requester = tokenService.extractRequesterDetails(req.getHeader("Authorization"));
+
+
+        List<User> users = userService.getAllUsers();
+        resp.setContentType("application/json");
+        resp.getWriter().write(mapper.writeValueAsString(users));
         resp.getWriter().write("<h1>Hello</h1>");
     }
 }

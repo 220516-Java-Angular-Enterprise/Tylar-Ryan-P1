@@ -2,10 +2,12 @@ package com.revature.reimbursements.daos;
 
 import com.revature.reimbursements.models.User;
 import com.revature.reimbursements.models.UserRole;
+import com.revature.reimbursements.services.UserService;
 import com.revature.reimbursements.util.database.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -41,8 +43,26 @@ public class UserRoleDAO implements CrudDAO<UserRole> {
     }
 
     @Override
-    public UserRole getById(String id) {
+    public UserRole getById(String roleId) {
         return null;
+    }
+
+    public ResultSet getRoleById(String roleId){
+        ResultSet resultSet;
+
+        try (Connection con = ConnectionFactory.getInstance().getConnection()) {
+            PreparedStatement ps = con.prepareStatement("SELECT role FROM user_role where role_id = ?");
+            ps.setString(1, roleId);
+            resultSet= ps.executeQuery();
+            //rs = String.valueOf(ps.executeQuery());
+
+            //userRole = rs.getString("role");
+
+        } catch (SQLException e) {
+            throw new RuntimeException("An error occurred when tyring to get data from to the database.");
+        }
+
+        return resultSet;
     }
 
     @Override
