@@ -27,11 +27,12 @@ Reimbursements are to be one of the following types:
 **Application Tier**
 - Java 8
 - Apache Maven
-- JDBC
-- Java EE Servlets
-- JSON Web Tokens
-- JUnit
-- Mockito
+- Postman
+- Tomcat
+- AWS
+- Dbeaver
+- Intellij
+
 
 ### Functional Requirements
 
