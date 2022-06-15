@@ -12,7 +12,7 @@ public class NewUserRequest {
     private String username;
     private String password;
     private String email;
-   // @JsonProperty("given_name")
+    // @JsonProperty("given_name")
     private String givenName;
     private boolean isActive;
     private String surname;
@@ -26,7 +26,7 @@ public class NewUserRequest {
         this.username = username;
         this.password = password;
     }
-//jsonpart
+    //jsonpart
     public NewUserRequest(String username, String email, String password, String givenName, String surname, String role) {
         this.username = username;
         this.password = password;

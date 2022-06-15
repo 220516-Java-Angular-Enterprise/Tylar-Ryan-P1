@@ -1,18 +1,15 @@
 package com.revature.reimbursements.services;
 
 import com.revature.reimbursements.daos.UserDAO;
+import com.revature.reimbursements.daos.UserRoleDAO;
 import com.revature.reimbursements.dtos.request.LoginRequest;
 import com.revature.reimbursements.dtos.request.NewUserRequest;
-import com.revature.reimbursements.dtos.responses.Principal;
 import com.revature.reimbursements.models.User;
-import com.revature.reimbursements.models.UserRole;
 import com.revature.reimbursements.util.annotations.Inject;
 import com.revature.reimbursements.util.custom_exceptions.AuthenticationException;
 import com.revature.reimbursements.util.custom_exceptions.InvalidRequestException;
-import com.revature.reimbursements.util.custom_exceptions.InvalidUserException;
 import com.revature.reimbursements.util.custom_exceptions.ResourceConflictException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,6 +54,7 @@ public class UserService {
         return user;
     }
 
+
     public List<User> getAllUsers() {
         return userDAO.getAll();
     }
@@ -65,6 +63,8 @@ public class UserService {
         return userDAO.getUsersByUsername(name);
     }
 
+
+    //public String getRoleById(String id){return userDAO.getRoleById(id);}
     private boolean isValidUsername(String username) {
         return username.matches("^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$");
     }

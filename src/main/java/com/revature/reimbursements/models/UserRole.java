@@ -9,6 +9,10 @@ public class UserRole {
         this.role = role;
     }
 
+    public UserRole(String role) {
+        this.role = role;
+    }
+
     public String getRoleId() {
         return roleId;
     }
