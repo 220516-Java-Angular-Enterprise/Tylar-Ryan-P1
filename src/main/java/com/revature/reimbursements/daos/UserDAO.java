@@ -18,16 +18,15 @@ public class UserDAO implements CrudDAO<User> {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
 
             //delete crypt
-            PreparedStatement ps = con.prepareStatement("INSERT INTO ers_user (user_id, username, email, password, given_name, surname, is_active, role_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO ers_user (user_id, username, email, password, surname, is_active, role_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
             ps.setString(1,obj.getUserId());
             ps.setString(2, obj.getUsername());
             ps.setString(3, obj.getEmail());
             ps.setString(4, obj.getPassword());
-            ps.setString(5, obj.getGivenName());
-            ps.setString(6, obj.getSurname());
-            ps.setBoolean(7, obj.getIsActive());
-            ps.setString(8, obj.getRoleId());
+            ps.setString(5, obj.getSurname());
+            ps.setBoolean(6, obj.getIsActive());
+            ps.setString(7, obj.getRoleId());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -48,6 +47,7 @@ public class UserDAO implements CrudDAO<User> {
         try(Connection con = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement ps = con.prepareStatement("DELETE FROM ers_user WHERE user_id = ?");
             ps.setString(1, userId);
+            ps.executeUpdate();
         }catch(SQLException e){
             throw new RuntimeException("An error occurred when tyring to get data from to the database.");
         }
@@ -77,15 +77,18 @@ public class UserDAO implements CrudDAO<User> {
         List<User> users = new ArrayList<>();
 
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM ers_user");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 User user = new User(); // user -> null
-                user.setUserId(rs.getString("id")); // user (id) -> 1232abce231dsf
+                user.setUserId(rs.getString("user_id")); // user (id) -> 1232abce231dsf
                 user.setUsername(rs.getString("username")); // user (username) -> bduong0929
                 user.setPassword(rs.getString("password")); // user (password) -> P@ssw0rd
-                user.setRoleId(rs.getString("role")); // user (role) -> DEFAULT
+                user.setRoleId(rs.getString("role_id"));
+                user.setEmail(rs.getString("email"));
+                user.setSurname(rs.getString("surname"));
+                user.setIsActive(rs.getBoolean("is_active"));
 
                 users.add(user);
             }
@@ -155,4 +158,6 @@ public class UserDAO implements CrudDAO<User> {
 
         return users;
     }
+
+
 }

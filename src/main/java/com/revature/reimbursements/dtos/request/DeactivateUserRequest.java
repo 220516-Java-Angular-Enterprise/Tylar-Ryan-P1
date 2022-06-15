@@ -1,9 +1,12 @@
 package com.revature.reimbursements.dtos.request;
 
-public class deactivateUserRequest {
+public class DeactivateUserRequest {
     String userId;
 
-    public deactivateUserRequest(String userId) {
+    public DeactivateUserRequest() {
+        super();
+    }
+    public DeactivateUserRequest(String userId) {
         this.userId = userId;
     }
 

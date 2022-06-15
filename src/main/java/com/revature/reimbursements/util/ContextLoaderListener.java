@@ -2,7 +2,12 @@ package com.revature.reimbursements.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.reimbursements.daos.UserDAO;
+import com.revature.reimbursements.daos.UserRoleDAO;
+import com.revature.reimbursements.models.User;
+import com.revature.reimbursements.models.UserRole;
+import com.revature.reimbursements.services.AdminService;
 import com.revature.reimbursements.services.TokenService;
+import com.revature.reimbursements.services.UserRoleService;
 import com.revature.reimbursements.services.UserService;
 import com.revature.reimbursements.servlets.AuthServlet;
 import com.revature.reimbursements.servlets.UserServlet;
@@ -23,7 +28,7 @@ public class ContextLoaderListener implements ServletContextListener {
         ObjectMapper mapper = new ObjectMapper();
 
         /* Dependency injection. */
-        UserServlet userServlet = new UserServlet(mapper, new UserService(new UserDAO()), new TokenService(new JwtConfig()));
+        UserServlet userServlet = new UserServlet(mapper, new UserService(new UserDAO()), new UserRoleService(new UserRoleDAO()), new TokenService(new JwtConfig()), new AdminService(new UserDAO()));
         AuthServlet authServlet = new AuthServlet(mapper, new UserService(new UserDAO()), new TokenService(new JwtConfig()));
 
         /* Need ServletContext class to map whatever servlet to url path. */

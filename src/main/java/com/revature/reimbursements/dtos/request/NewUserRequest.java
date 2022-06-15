@@ -91,7 +91,6 @@ public class NewUserRequest {
                 ", givenName='" + givenName + '\'' +
                 ", isActive=" + isActive +
                 ", surname='" + surname + '\'' +
-                ", role='" + role + '\'' +
                 '}';
     }
 }
