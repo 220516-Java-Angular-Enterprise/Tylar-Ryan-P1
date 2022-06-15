@@ -28,7 +28,7 @@ public class UserService {
     }
 
     public User login(LoginRequest request) {
-        User user = new User();
+        User user;
         if (!isValidUsername(request.getUsername()) || !isValidPassword(request.getPassword()))
             throw new InvalidRequestException("Invalid username or password");
         user = userDAO.getUserByUsernameAndPassword(request.getUsername(), request.getPassword());
@@ -42,7 +42,7 @@ public class UserService {
             if (isValidUsername(user.getUsername())) {
                 if (isValidPassword(user.getPassword())) {
                     user.setUserId(UUID.randomUUID().toString());
-                    user.setRoleId(user.getRoleId());
+                    user.setRole(user.getRole());
                     user.setEmail(user.getEmail());
                     //user.setGivenName(user.getGivenName());
                     user.setSurname(user.getSurname());
