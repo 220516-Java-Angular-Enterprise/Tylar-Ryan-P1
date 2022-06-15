@@ -2,6 +2,7 @@
 Project 1
 Java Enterprise Foundations Project Requirements
 Project Description
+
 Our P1 reimbursement project aims to automate reimbursement processes of a company.
 it will allow an Admin to enter new employees of the company and assign their role or position with the company.
 
