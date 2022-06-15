@@ -44,8 +44,13 @@ public class UserDAO implements CrudDAO<User> {
     }
 
     @Override
-    public void delete(String id) {
-
+    public void delete(String userId) {
+        try(Connection con = ConnectionFactory.getInstance().getConnection()){
+            PreparedStatement ps = con.prepareStatement("DELETE FROM ers_user WHERE user_id = ?");
+            ps.setString(1, userId);
+        }catch(SQLException e){
+            throw new RuntimeException("An error occurred when tyring to get data from to the database.");
+        }
     }
 
     @Override
@@ -53,12 +58,12 @@ public class UserDAO implements CrudDAO<User> {
         User user = new User();
 
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users where id = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM ers_user where user_id = ?");
             ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role"));
+                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role_id"));
             }
         } catch (SQLException e) {
             throw new RuntimeException("An error occurred when tyring to get data from to the database.");
@@ -118,13 +123,13 @@ public class UserDAO implements CrudDAO<User> {
         User user = null;
 
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM ers_user WHERE username = ? AND password = ?");
             ps.setString(1, username);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role"));
+                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role_id"));
             }
         } catch (SQLException e) {
             throw new InvalidSQLException("An error occurred when tyring to get data from to the database.");

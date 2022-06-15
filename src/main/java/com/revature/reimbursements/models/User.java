@@ -5,7 +5,7 @@ public class User {
     private String userId;
     private String username;
     private String password;
-    private String roleId;
+    private String roleId = "three";
     private String email;
     private String givenName;
     private String surname;
@@ -26,16 +26,23 @@ public class User {
         this.isActive = isActive;
     }
 
-    public User(String username, String password, String roleId, String email, String givenName, String surname) {
+    public User(String username, String password, String email, String surname, Boolean isActive) {
         this.username = username;
         this.password = password;
-        this.roleId = roleId;
+        this.isActive = isActive;
+        this.email = email;
+        this.surname = surname;
     }
 
     public User(String username, String password, String roleId) {
         this.username = username;
         this.password = password;
         this.roleId = roleId;
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
 

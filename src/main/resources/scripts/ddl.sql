@@ -1,25 +1,23 @@
-create table users(
-	id varchar primary key not null,
-	username varchar not null,
-	password varchar not null,
-	role varchar not null
-)
+drop table if exists users;
+drop table if exists ers_user;
+drop table if exists user_role;
 
-create table ers_user_role(
+
+create table user_role(
 	role_id varchar primary key not null,
 	role varchar
 )
 
 create table ers_user(
-	user_id varchar primary key not null,
+	user_id varchar primary key,
 	username varchar not null,
 	email varchar not null,
 	password varchar not null,
-	given_name varchar not null,
+	given_name varchar,
 	surname varchar not null,
-	is_active boolean,
-	role_id varchar,
-	constraint fk_role_id foreign key (role_id) references ers_user_roles(role_id)
+	is_active boolean not null,
+	role_id varchar not null,
+	constraint fk_role_id foreign key (role_id) references user_role(role_id)
 )
 
 create table reimbursement_type(
