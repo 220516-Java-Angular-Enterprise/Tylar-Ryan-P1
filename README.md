@@ -2,7 +2,10 @@
 Project 1
 Java Enterprise Foundations Project Requirements
 Project Description
-For the foundations module of your training you are tasked with building an API that will support a new internal expense reimbursement system. This system will manage the process of reimbursing employees for expenses incurred while on company time. All registered employees in the company can login and submit requests for reimbursement and view their past tickets and pending requests. Finance managers can log in and view all reimbursement requests and past history for all employees in the company. Finance managers are authorized to approve and deny requests for expense reimbursement.
+Our P1 reimbursement project aims to automate reimbursement processes of a company.
+it will allow an Admin to enter new employees of the company and assign their role or position with the company.
+Our reimbursement project will have different functionalities corresponding to the role of the employee. Only the admin can add and edit a new user and only the finance manager can approve or reject the reimbursement request.
+The project will also have security features where it will logout the user when his token has expired.
 
 Project Design Specifications and Documents
 Relational Data Model
