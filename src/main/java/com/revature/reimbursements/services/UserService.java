@@ -41,6 +41,7 @@ public class UserService {
                 if (isValidPassword(user.getPassword())) {
                     user.setUserId(UUID.randomUUID().toString());
                     user.setRole(user.getRole());
+                    user.setRoleId(user.getRoleId());
                     user.setEmail(user.getEmail());
                     //user.setGivenName(user.getGivenName());
                     user.setSurname(user.getSurname());

@@ -28,6 +28,7 @@ public class User {
     public User(String username, String password, String email, String surname, Boolean isActive) {
         this.username = username;
         this.password = password;
+        this.roleId = roleId;
         this.isActive = isActive;
         this.email = email;
         this.surname = surname;

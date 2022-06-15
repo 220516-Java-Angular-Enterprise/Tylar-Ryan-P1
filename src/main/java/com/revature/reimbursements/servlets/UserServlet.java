@@ -80,6 +80,7 @@ public class UserServlet extends HttpServlet {
             resp.setContentType("application/json");
             resp.getWriter().write(mapper.writeValueAsString(createdUser.getUserId()));
             resp.getWriter().write(mapper.writeValueAsString(createdUser.getRoleId()));
+            //resp.getWriter().write(mapper.writeValueAsString(createdUser.getRole()));
            // resp.getWriter().write(mapper.writeValueAsString(userRoleService.getRoleById(createdUser.getUserId())));
         } catch (InvalidRequestException e) {
             resp.setStatus(404); // BAD REQUEST

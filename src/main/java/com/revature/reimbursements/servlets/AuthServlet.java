@@ -59,6 +59,5 @@ public class AuthServlet extends HttpServlet {
         List<User> users = userService.getAllUsers();
         resp.setContentType("application/json");
         resp.getWriter().write(mapper.writeValueAsString(users));
-        resp.getWriter().write("<h1>Hello</h1>");
     }
 }
