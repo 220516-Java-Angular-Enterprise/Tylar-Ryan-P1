@@ -60,4 +60,5 @@ public class AuthServlet extends HttpServlet {
         resp.setContentType("application/json");
         resp.getWriter().write(mapper.writeValueAsString(users));
     }
+
 }
