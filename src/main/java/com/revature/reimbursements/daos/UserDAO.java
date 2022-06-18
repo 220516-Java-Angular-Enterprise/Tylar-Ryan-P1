@@ -18,7 +18,7 @@ public class UserDAO implements CrudDAO<User> {
         try (Connection con = ConnectionFactory.getInstance().getConnection()) {
 
             //delete crypt
-            PreparedStatement ps = con.prepareStatement("INSERT INTO ers_user (user_id, username, email, password, surname, is_active, role_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO ers_user (user_id, username, email, password, surname, is_active, role) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
             ps.setString(1,obj.getUserId());
             ps.setString(2, obj.getUsername());
@@ -26,7 +26,7 @@ public class UserDAO implements CrudDAO<User> {
             ps.setString(4, obj.getPassword());
             ps.setString(5, obj.getSurname());
             ps.setBoolean(6, obj.getIsActive());
-            ps.setString(7, obj.getRoleId());
+            ps.setString(7, obj.getRole());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -63,7 +63,7 @@ public class UserDAO implements CrudDAO<User> {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role_id"));
+                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role"), rs.getString("user_id"));
             }
         } catch (SQLException e) {
             throw new RuntimeException("An error occurred when tyring to get data from to the database.");
@@ -85,7 +85,7 @@ public class UserDAO implements CrudDAO<User> {
                 user.setUserId(rs.getString("user_id")); // user (id) -> 1232abce231dsf
                 user.setUsername(rs.getString("username")); // user (username) -> bduong0929
                 user.setPassword(rs.getString("password")); // user (password) -> P@ssw0rd
-                user.setRoleId(rs.getString("role_id"));
+                user.setRole(rs.getString("role"));
                 user.setEmail(rs.getString("email"));
                 user.setSurname(rs.getString("surname"));
                 user.setIsActive(rs.getBoolean("is_active"));
@@ -132,7 +132,7 @@ public class UserDAO implements CrudDAO<User> {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role_id"));
+                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role"), rs.getString("user_id"));
             }
         } catch (SQLException e) {
             throw new InvalidSQLException("An error occurred when tyring to get data from to the database.");
@@ -150,7 +150,7 @@ public class UserDAO implements CrudDAO<User> {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                users.add(new User(rs.getString("username"), rs.getString("password"), rs.getString("role")));
+                users.add(new User(rs.getString("username"), rs.getString("password"), rs.getString("role"), rs.getString("user_id")));
             }
         } catch (SQLException e) {
             throw new InvalidSQLException("An error occurred when tyring to get data from to the database.");

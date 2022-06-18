@@ -9,9 +9,7 @@ public class NewUserRequest {
     private String givenName;
     private Boolean isActive = true;
     private String surname;
-    private String role = "DEFAULT";
-
-    private String roleId;
+    private final String role = "DEFAULT";
 
     public NewUserRequest() {
         super();
@@ -22,15 +20,12 @@ public class NewUserRequest {
         this.password = password;
     }
 
-    public NewUserRequest(String username, String password, String email, String givenName, Boolean isActive, String surname, String role, String roleId) {
+    public NewUserRequest(String username, String password, String email, Boolean isActive, String surname) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.givenName = givenName;
         this.isActive = isActive;
         this.surname = surname;
-        this.role = role;
-        this.roleId = roleId;
     }
 
     public String getUsername() {
@@ -73,14 +68,6 @@ public class NewUserRequest {
         this.surname = surname;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public Boolean getActive() {
         return isActive;
     }
@@ -89,16 +76,9 @@ public class NewUserRequest {
         isActive = active;
     }
 
-    public String getRoleId() {
-        return roleId;
-    }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
-    }
-
-        public User extractUser() {
-        return new User(username, password, email, surname, isActive);
+    public User extractUser() {
+        return new User(username, password, email, surname, isActive, role);
     }
 
 

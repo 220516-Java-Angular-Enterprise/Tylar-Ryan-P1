@@ -5,7 +5,6 @@ public class User {
     private String userId;
     private String username;
     private String password;
-    private String roleId = "3";
     private String role;
     private String email;
     private String surname;
@@ -15,35 +14,34 @@ public class User {
         super();
     }
 
-    public User(String userId, String username, String password, String roleId, String email, String surname, boolean isActive) {
+    public User(String userId, String username, String password, String email, String surname, boolean isActive, String role) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.roleId = roleId;
         this.email = email;
         this.surname = surname;
         this.isActive = isActive;
+        this.role = role;
     }
 
-    public User(String username, String password, String email, String surname, Boolean isActive) {
+    public User(String username, String password, String email, String surname, Boolean isActive, String role) {
         this.username = username;
         this.password = password;
-        this.roleId = roleId;
         this.isActive = isActive;
         this.email = email;
         this.surname = surname;
+        this.role = role;
     }
-    public User(String username, String password, String role) {
+    public User(String username, String password, String role, String userId) {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.userId = userId;
     }
 
     public User(String role){
         this.role = role;
     }
-
-
 
     public String getUserId() {
         return userId;
@@ -77,14 +75,6 @@ public class User {
         this.role = role;
     }
 
-    public String getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -115,7 +105,6 @@ public class User {
                 "userId='" + userId + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", roleId='" + roleId + '\'' +
                 ", email='" + email + '\'' +
                 ", surname='" + surname + '\'' +
                 ", isActive=" + isActive +

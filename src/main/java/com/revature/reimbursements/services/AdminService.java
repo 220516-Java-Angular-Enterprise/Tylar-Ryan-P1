@@ -16,8 +16,8 @@ public class AdminService {
 
     public User deleteUser(DeactivateUserRequest request){
         User user;
-        user = userDAO.getById(request.getUserId());
         request.setUserId(request.getUserId());
+        user = userDAO.getById(request.getUserId());
         userDAO.delete(request.getUserId());
 
         return user;
