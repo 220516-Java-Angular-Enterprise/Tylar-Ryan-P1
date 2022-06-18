@@ -14,13 +14,13 @@ public class AdminService {
         this.userDAO = userDAO;
     }
 
-    public User deleteUser(DeactivateUserRequest request){
-        User user;
-        request.setUserId(request.getUserId());
-        user = userDAO.getById(request.getUserId());
-        userDAO.delete(request.getUserId());
+    public void deleteUser(String request){
+        //User user = request.extractUser();
+      //  user.setUserId(user.getUserId());
+        //user = userDAO.getById(request.getUserId());
+        userDAO.delete("c3d92734-4f55-4d8b-bf69-46a2006a35cf");
 
-        return user;
+
     }
 
 }

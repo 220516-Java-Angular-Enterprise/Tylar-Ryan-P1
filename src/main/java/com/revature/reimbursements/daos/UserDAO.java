@@ -43,10 +43,10 @@ public class UserDAO implements CrudDAO<User> {
     }
 
     @Override
-    public void delete(String userId) {
+    public void delete(String id) {
         try(Connection con = ConnectionFactory.getInstance().getConnection()){
             PreparedStatement ps = con.prepareStatement("DELETE FROM ers_user WHERE user_id = ?");
-            ps.setString(1, userId);
+            ps.setString(1, id);
             ps.executeUpdate();
         }catch(SQLException e){
             throw new RuntimeException("An error occurred when tyring to get data from to the database.");

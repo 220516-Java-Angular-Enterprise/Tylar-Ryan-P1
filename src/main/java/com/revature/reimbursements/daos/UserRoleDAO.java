@@ -38,7 +38,7 @@ public class UserRoleDAO implements CrudDAO<UserRole> {
 
 
     @Override
-    public void delete(String id) {
+    public void delete(String s) {
 
     }
 

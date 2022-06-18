@@ -1,5 +1,6 @@
 package com.revature.reimbursements.servlets;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.reimbursements.dtos.request.DeactivateUserRequest;
 import com.revature.reimbursements.dtos.request.LoginRequest;
@@ -102,10 +103,10 @@ public class AuthServlet extends HttpServlet {
                 return;
             }
 
-            User deletedUser = adminService.deleteUser(deactivateUserRequest);
+            adminService.deleteUser("c3d92734-4f55-4d8b-bf69-46a2006a35cf");
             resp.setStatus(201); // Deleted
             resp.setContentType("application/json");
-            resp.getWriter().write(mapper.writeValueAsString(deletedUser.toString()));
+            resp.getWriter().write(mapper.writeValueAsString(deactivateUserRequest.getUserId()));
 
         } catch (InvalidRequestException e) {
             resp.setStatus(404); // BAD REQUEST
