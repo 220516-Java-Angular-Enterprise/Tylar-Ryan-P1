@@ -4,6 +4,7 @@ import com.revature.reimbursements.daos.UserDAO;
 import com.revature.reimbursements.daos.UserRoleDAO;
 import com.revature.reimbursements.dtos.request.LoginRequest;
 import com.revature.reimbursements.dtos.request.NewUserRequest;
+import com.revature.reimbursements.dtos.request.ReimbursementRequest;
 import com.revature.reimbursements.models.User;
 import com.revature.reimbursements.util.annotations.Inject;
 import com.revature.reimbursements.util.custom_exceptions.AuthenticationException;
@@ -52,6 +53,8 @@ public class UserService {
 
         return user;
     }
+
+
 
 
     public List<User> getAllUsers() {

@@ -2,7 +2,7 @@ package com.revature.reimbursements.dtos.request;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.revature.reimbursements.models.User;
 
-//@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DeactivateUserRequest {
     private String userId;
 

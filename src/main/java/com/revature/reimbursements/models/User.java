@@ -39,10 +39,13 @@ public class User {
         this.userId = userId;
     }
 
-    public User(String role){
-        this.role = role;
-    }
+//    public User(String role){
+//        this.role = role;
+//    }
 
+    public User(String userId){
+        this.userId = userId;
+    }
     public String getUserId() {
         return userId;
     }

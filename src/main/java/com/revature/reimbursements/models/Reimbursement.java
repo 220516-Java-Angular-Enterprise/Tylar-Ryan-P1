@@ -4,38 +4,57 @@ import java.sql.Blob;
 import java.sql.Timestamp;
 
 public class Reimbursement {
-    private String reimb_id;
-    private double amount;
-    private Timestamp submitted;
-    private Timestamp resolved;
-    private String description;
-    private Blob receipt;
-    private String payment_id;
-    private String author_id;
-    private String resolver_id;
-    private String status_id;
-    private String type_id;
+    private String id;
 
-    public Reimbursement(String reimb_id, double amount, Timestamp submitted, Timestamp resolved, String description, Blob receipt, String payment_id, String author_id, String resolver_id, String status_id, String type_id) {
-        this.reimb_id = reimb_id;
+    private double amount;
+
+    private Timestamp submitted;
+
+    private Timestamp resolved;
+
+    private String description;
+
+    private String paymentId;
+
+    private String authorId;
+
+    private String resolverId;
+
+    private String statusId;
+
+    private String typeId;
+
+    public Reimbursement(String id, double amount, Timestamp submitted, Timestamp resolved, String description, String paymentId, String authorId, String resolverId, String statusId, String typeId) {
+        this.id = id;
         this.amount = amount;
         this.submitted = submitted;
         this.resolved = resolved;
         this.description = description;
-        this.receipt = receipt;
-        this.payment_id = payment_id;
-        this.author_id = author_id;
-        this.resolver_id = resolver_id;
-        this.status_id = status_id;
-        this.type_id = type_id;
+        this.paymentId = paymentId;
+        this.authorId = authorId;
+        this.resolverId = resolverId;
+        this.statusId = statusId;
+        this.typeId = typeId;
     }
 
-    public String getReimb_id() {
-        return reimb_id;
+
+    public Reimbursement(String description, double amount) {
+        this.amount = amount;
+        this.description = description;
     }
 
-    public void setReimb_id(String reimb_id) {
-        this.reimb_id = reimb_id;
+    public Reimbursement(String id, double amount, String description) {
+        this.id = id;
+        this.amount = amount;
+        this.description = description;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public double getAmount() {
@@ -70,51 +89,43 @@ public class Reimbursement {
         this.description = description;
     }
 
-    public Blob getReceipt() {
-        return receipt;
+    public String getPaymentId() {
+        return paymentId;
     }
 
-    public void setReceipt(Blob receipt) {
-        this.receipt = receipt;
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
     }
 
-    public String getPayment_id() {
-        return payment_id;
+    public String getAuthorId() {
+        return authorId;
     }
 
-    public void setPayment_id(String payment_id) {
-        this.payment_id = payment_id;
+    public void setAuthorId(String authorId) {
+        this.authorId = authorId;
     }
 
-    public String getAuthor_id() {
-        return author_id;
+    public String getResolverId() {
+        return resolverId;
     }
 
-    public void setAuthor_id(String author_id) {
-        this.author_id = author_id;
+    public void setResolverId(String resolverId) {
+        this.resolverId = resolverId;
     }
 
-    public String getResolver_id() {
-        return resolver_id;
+    public String getStatusId() {
+        return statusId;
     }
 
-    public void setResolver_id(String resolver_id) {
-        this.resolver_id = resolver_id;
+    public void setStatusId(String statusId) {
+        this.statusId = statusId;
     }
 
-    public String getStatus_id() {
-        return status_id;
+    public String getTypeId() {
+        return typeId;
     }
 
-    public void setStatus_id(String status_id) {
-        this.status_id = status_id;
-    }
-
-    public String getType_id() {
-        return type_id;
-    }
-
-    public void setType_id(String type_id) {
-        this.type_id = type_id;
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
     }
 }

@@ -3,14 +3,13 @@ package com.revature.reimbursements.util;
 import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.reimbursements.daos.ReimbursementDAO;
 import com.revature.reimbursements.daos.UserDAO;
 import com.revature.reimbursements.daos.UserRoleDAO;
 import com.revature.reimbursements.dtos.request.DeactivateUserRequest;
-import com.revature.reimbursements.services.AdminService;
-import com.revature.reimbursements.services.TokenService;
-import com.revature.reimbursements.services.UserRoleService;
-import com.revature.reimbursements.services.UserService;
+import com.revature.reimbursements.services.*;
 import com.revature.reimbursements.servlets.AuthServlet;
+import com.revature.reimbursements.servlets.ReimbursementServlet;
 import com.revature.reimbursements.servlets.UserServlet;
 
 import javax.servlet.ServletContext;
@@ -34,11 +33,13 @@ public class ContextLoaderListener implements ServletContextListener {
         /* Dependency injection. */
         UserServlet userServlet = new UserServlet(mapper, new UserService(new UserDAO()), new UserRoleService(new UserRoleDAO()), new TokenService(new JwtConfig()), new AdminService(new UserDAO()));
         AuthServlet authServlet = new AuthServlet(mapper, new UserService(new UserDAO()), new AdminService(new UserDAO()), new TokenService(new JwtConfig()));
+        ReimbursementServlet reimbursementServlet = new ReimbursementServlet(mapper, new ReimbursementService(new ReimbursementDAO()), new TokenService(new JwtConfig()));
 
         /* Need ServletContext class to map whatever servlet to url path. */
         ServletContext context = sce.getServletContext();
 
         context.addServlet("UserServlet", userServlet).addMapping("/users/*");
+        context.addServlet("ReimbursementServlet", reimbursementServlet).addMapping("/reimbursement/*");
         context.addServlet("AuthServlet", authServlet).addMapping("/auth/*");
 
     }

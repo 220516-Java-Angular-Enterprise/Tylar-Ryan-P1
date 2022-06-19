@@ -103,7 +103,7 @@ public class AuthServlet extends HttpServlet {
                 return;
             }
 
-            adminService.deleteUser("c3d92734-4f55-4d8b-bf69-46a2006a35cf");
+            adminService.deleteUser(deactivateUserRequest.getUserId());
             resp.setStatus(201); // Deleted
             resp.setContentType("application/json");
             resp.getWriter().write(mapper.writeValueAsString(deactivateUserRequest.getUserId()));
