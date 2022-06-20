@@ -1,6 +1,7 @@
 package com.revature.reimbursements.services;
 
 import com.revature.reimbursements.dtos.responses.Principal;
+import com.revature.reimbursements.dtos.responses.ReimbPrincipal;
 import com.revature.reimbursements.util.JwtConfig;
 import com.revature.reimbursements.util.annotations.Inject;
 import io.jsonwebtoken.Claims;
@@ -48,4 +49,5 @@ public class TokenService {
             return null;
         }
     }
+
 }

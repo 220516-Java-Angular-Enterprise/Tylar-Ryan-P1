@@ -1,11 +1,15 @@
 package com.revature.reimbursements.daos;
 
 import com.revature.reimbursements.models.Reimbursement;
+import com.revature.reimbursements.models.User;
+import com.revature.reimbursements.util.custom_exceptions.InvalidSQLException;
 import com.revature.reimbursements.util.database.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReimbursementDAO implements CrudDAO<Reimbursement> {
@@ -41,6 +45,22 @@ public class ReimbursementDAO implements CrudDAO<Reimbursement> {
 
     }
 
+    public void updateById(String reimbId, String statusId, String resolverId){
+        try(Connection con = ConnectionFactory.getInstance().getConnection()){
+
+            PreparedStatement ps = con.prepareStatement("UPDATE reimbursement SET (status_id,resolver_id) = (?,?) WHERE reimb_id = ?");
+            ps.setString(1, statusId);
+            ps.setString(2, resolverId);
+            ps.setString(3, reimbId);
+            ps.executeUpdate();
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+            throw new RuntimeException("An error occurred when tyring to get data from to the database.");
+        }
+    }
+
     @Override
     public void delete(String s) {
 
@@ -48,7 +68,39 @@ public class ReimbursementDAO implements CrudDAO<Reimbursement> {
 
     @Override
     public Reimbursement getById(String id) {
-        return null;
+        Reimbursement reimbursement = null;
+
+        try (Connection con = ConnectionFactory.getInstance().getConnection()) {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM reimbursement WHERE reimb_id = ?");
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                reimbursement = new Reimbursement(rs.getString("reimb_id"), rs.getDouble("amount"), rs.getString("description"), rs.getString("status_id"));
+            }
+        } catch (SQLException e) {
+            throw new InvalidSQLException("An error occurred when tyring to get data from to the database.");
+        }
+
+        return reimbursement;
+    }
+
+    public List<Reimbursement> getByStatusId(){
+        List<Reimbursement> reimbursement = new ArrayList<>();
+
+        try (Connection con = ConnectionFactory.getInstance().getConnection()) {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM reimbursement WHERE status_id = ?");
+            ps.setString(1, "1");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                reimbursement.add(new Reimbursement(rs.getString("reimb_id"), rs.getDouble("amount"), rs.getString("description"), rs.getString("status_id")));
+            }
+        } catch (SQLException e) {
+            throw new InvalidSQLException("An error occurred when tyring to get data from to the database.");
+        }
+
+        return reimbursement;
     }
 
     @Override

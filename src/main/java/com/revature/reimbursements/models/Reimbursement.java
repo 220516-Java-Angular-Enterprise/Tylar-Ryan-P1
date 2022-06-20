@@ -20,7 +20,7 @@ public class Reimbursement {
 
     private String resolverId;
 
-    private String statusId;
+    private String statusId = "1";
 
     private String typeId;
 
@@ -43,10 +43,23 @@ public class Reimbursement {
         this.description = description;
     }
 
-    public Reimbursement(String id, double amount, String description) {
+    public Reimbursement(String id, double amount, String description, String statusId) {
         this.id = id;
         this.amount = amount;
         this.description = description;
+        this.statusId = statusId;
+    }
+
+    public Reimbursement(String id, String statusId) {
+        this.id = id;
+        this.statusId = statusId;
+    }
+
+    public Reimbursement(String id, String resolverId, String statusId, Timestamp resolved) {
+        this.id = id;
+        this.resolverId = resolverId;
+        this.statusId = statusId;
+        this.resolved = resolved;
     }
 
     public String getId() {
@@ -127,5 +140,15 @@ public class Reimbursement {
 
     public void setTypeId(String typeId) {
         this.typeId = typeId;
+    }
+
+    @Override
+    public String toString() {
+        return "Reimbursement{" +
+                "id='" + id + '\'' +
+                ", amount=" + amount +
+                ", description='" + description + '\'' +
+                ", statusId='" + statusId + '\'' +
+                '}';
     }
 }

@@ -1,12 +1,9 @@
 package com.revature.reimbursements.util;
 
-import com.fasterxml.jackson.databind.DeserializationConfig;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.reimbursements.daos.ReimbursementDAO;
 import com.revature.reimbursements.daos.UserDAO;
 import com.revature.reimbursements.daos.UserRoleDAO;
-import com.revature.reimbursements.dtos.request.DeactivateUserRequest;
 import com.revature.reimbursements.services.*;
 import com.revature.reimbursements.servlets.AuthServlet;
 import com.revature.reimbursements.servlets.ReimbursementServlet;
